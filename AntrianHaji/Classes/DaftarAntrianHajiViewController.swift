@@ -14,10 +14,11 @@ import RxCocoa
 import SVProgressHUD
 
 
-class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel {
+class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel, UISearchBarDelegate {
 	
 	// OUTLETS
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var searchBar: UISearchBar!
 	
 	// VARIABLES
 	var antrians   = [Antrian]()
@@ -30,6 +31,8 @@ class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel {
 		
 		self.tableView.estimatedRowHeight = 66
 		self.tableView.rowHeight = UITableViewAutomaticDimension
+		
+		self.searchBar.delegate = self
 		
 		self.title = "Daftar Antrian Haji"
 		
@@ -69,6 +72,7 @@ class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel {
 		}
 	}
 	
+	//MARK: Do Reload Data
 	func reloadData() {
 		
 		SVProgressHUD.show()
@@ -88,13 +92,13 @@ class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel {
 		}).addDisposableTo(disposeBag)
 	}
 	
-	//MARK: Pencarian Data
-	@IBAction func prosesPencarianData(_ sender: UIBarButtonItem) {
-		
-	}
-	
 	@IBAction func refreshData(_ sender: UIBarButtonItem) {
 		self.reloadData()
+	}
+	
+	// MARK: Search Data
+	func searchData() {
+		
 	}
 	
 	
@@ -102,6 +106,8 @@ class DaftarAntrianHajiViewController: UIViewController, AntrianViewModel {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
     }
+	
+	//MARK: UISearchBarDelegate
 	
 }
 
